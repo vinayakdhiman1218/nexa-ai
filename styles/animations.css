@@ -1,0 +1,330 @@
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 20s linear infinite;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+/* Floating Cards Animation */
+.floating-card {
+  animation: float 4s ease-in-out infinite;
+}
+
+.card-1 {
+  animation-delay: 0s;
+  animation-duration: 5s;
+}
+
+.card-2 {
+  animation-delay: 1s;
+  animation-duration: 6s;
+}
+
+.card-3 {
+  animation-delay: 2s;
+  animation-duration: 4s;
+}
+
+/* Background Orbs Animation */
+.gradient-orb {
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-1 {
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.orb-2 {
+  animation-delay: 3s;
+  animation-duration: 12s;
+}
+
+.orb-3 {
+  animation-delay: 6s;
+  animation-duration: 8s;
+}
+
+/* Hero Content Animation */
+.hero-title {
+  animation: slideInLeft 1s ease-out 0.2s both;
+}
+
+.hero-description {
+  animation: slideInLeft 1s ease-out 0.4s both;
+}
+
+.hero-buttons {
+  animation: slideInLeft 1s ease-out 0.6s both;
+}
+
+.hero-visual {
+  animation: slideInRight 1s ease-out 0.8s both;
+}
+
+/* AI Image Animation */
+.ai-image {
+  animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+/* Feature Cards Intersection Observer Animation */
+.feature-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.feature-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Animation for Feature Cards */
+.feature-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.feature-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.feature-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.feature-card:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+/* Hover Animations */
+.feature-card:hover {
+  animation: none;
+}
+
+.feature-card:hover .icon-3d {
+  animation: rotate 2s linear infinite;
+}
+
+/* Button Hover Animations */
+.cta-button {
+  transition: all var(--transition-normal);
+}
+
+.cta-button:hover {
+  animation: glow 1s ease-in-out infinite;
+}
+
+/* Text Gradient Animation */
+.gradient-text {
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading Animation */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-primary);
+  animation: rotate 1s linear infinite;
+}
+
+/* Particle Animation */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+    opacity: 0.6;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  animation: particle-float 15s linear infinite;
+  pointer-events: none;
+}
+
+/* Tilt Effect for Cards */
+.feature-card[data-tilt] {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .floating-card,
+  .gradient-orb,
+  .ai-image {
+    animation: none !important;
+  }
+}
