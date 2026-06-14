@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NEXA AI Chat</title>
+        <meta name="description" content="Chat with NEXA AI Assistant" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="styles/chatbot.css" />
+
+        <!-- Font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+    </head>
+    <body>
+        <div class="chatbot-app">
+            <!-- Sidebar -->
+            <aside class="chatbot-sidebar">
+                <div class="sidebar-header">
+                    <button class="new-chat-btn">
+                        <i data-feather="plus"></i>
+                        <span>New Chat</span>
+                    </button>
+                </div>
+                <div class="sidebar-resize-handle" id="sidebar-resize-handle" title="Drag to resize sidebar"></div>
+
+                <div class="sidebar-search">
+                    <input 
+                        id="search-input"
+                        type="text" 
+                        placeholder="Search chats..."
+                        class="search-input"
+                    />
+                    <i data-feather="search"></i>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-nav">
+                        <a href="#" class="sidebar-nav-item" id="images-link">
+                            <i data-feather="image"></i>
+                            <span>Images</span>
+                        </a>
+                        <a href="#" class="sidebar-nav-item">
+                            <i data-feather="layout"></i>
+                            <span>Library</span>
+                        </a>
+                        <a href="#" class="sidebar-nav-item" id="clear-history-btn">
+                            <i data-feather="trash-2"></i>
+                            <span>Clear History</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Recent</h3>
+                    <div class="recent-chats" id="recent-chats">
+                        <!-- Recent chats will be added here -->
+                    </div>
+                </div>
+
+                <div class="sidebar-section archived-section" id="archived-section" style="display:none;">
+                    <h3 class="sidebar-title">Archived</h3>
+                    <div class="archived-chats" id="archived-chats"></div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <div class="user-avatar">V</div>
+                        <div class="user-info">
+                            <p class="user-name">Vinayak Dhiman</p>
+                            <p class="user-email">vinayak@example.com</p>
+                        </div>
+                        <button class="profile-menu-btn">
+                            <i data-feather="more-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Chat Area -->
+            <main class="chatbot-main">
+                <div class="chat-container">
+                    <!-- Header with back button for mobile -->
+                    <div class="chat-header">
+                        <button class="sidebar-toggle" id="sidebar-toggle">
+                            <i data-feather="menu"></i>
+                        </button>
+                        <div class="chat-header-title">NEXA AI</div>
+                    </div>
+
+                    <div class="chat-meta-bar">
+                        <div class="conversation-title">
+                            <h2 id="conversation-title">New Conversation</h2>
+                            <p id="conversation-preview">Start a chat to save it to history.</p>
+                        </div>
+                        <div class="conversation-actions">
+                            <button class="icon-btn" id="pin-chat-btn" title="Pin conversation"><i data-feather="star"></i></button>
+                            <button class="icon-btn" id="favorite-chat-btn" title="Favorite conversation"><i data-feather="heart"></i></button>
+                            <button class="icon-btn" id="archive-chat-btn" title="Archive conversation"><i data-feather="archive"></i></button>
+                            <button class="icon-btn" id="export-chat-btn" title="Export conversation"><i data-feather="share-2"></i></button>
+                            <button class="icon-btn" id="delete-chat-btn" title="Delete conversation"><i data-feather="trash-2"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Messages Area -->
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="welcome-section">
+                            <div class="welcome-content">
+                                <h1 class="welcome-title">What can I help with, Vinayak?</h1>
+                                <p class="welcome-subtitle">Ask anything or explore these options</p>
+
+                                <div class="welcome-chips">
+                                    <button class="welcome-chip" data-suggestion="Create a detailed project plan for a web application">
+                                        <div class="chip-icon">
+                                            <i data-feather="lightbulb"></i>
+                                        </div>
+                                        <div class="chip-content">
+                                            <p class="chip-title">Create a detailed project plan</p>
+                                            <p class="chip-text">for a web application</p>
+                                        </div>
+                                    </button>
+
+                                    <button class="welcome-chip" data-suggestion="Explain quantum computing in simple terms">
+                                        <div class="chip-icon">
+                                            <i data-feather="cpu"></i>
+                                        </div>
+                                        <div class="chip-content">
+                                            <p class="chip-title">Explain quantum computing</p>
+                                            <p class="chip-text">in simple terms</p>
+                                        </div>
+                                    </button>
+
+                                    <button class="welcome-chip" data-suggestion="Generate a Python script for data analysis">
+                                        <div class="chip-icon">
+                                            <i data-feather="code"></i>
+                                        </div>
+                                        <div class="chip-content">
+                                            <p class="chip-title">Generate a Python script</p>
+                                            <p class="chip-text">for data analysis</p>
+                                        </div>
+                                    </button>
+
+                                    <button class="welcome-chip" data-suggestion="Write a creative story about an AI">
+                                        <div class="chip-icon">
+                                            <i data-feather="pen-tool"></i>
+                                        </div>
+                                        <div class="chip-content">
+                                            <p class="chip-title">Write a creative story</p>
+                                            <p class="chip-text">about an AI</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="chat-input-area">
+                        <div class="input-container">
+                            <input
+                                type="text"
+                                class="chat-input"
+                                id="chat-input"
+                                placeholder="Ask NEXA anything..."
+                                autocomplete="off"
+                            />
+                            <button class="input-action-btn" id="send-btn">
+                                <i data-feather="send"></i>
+                            </button>
+                        </div>
+                        <p class="input-footer">NEXA AI can make mistakes. Check important info.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Images Modal -->
+        <div class="images-modal" id="images-modal">
+            <div class="images-modal-content">
+                <div class="images-modal-header">
+                    <h2>Chat Images</h2>
+                    <button class="modal-close-btn" id="images-modal-close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="images-modal-body" id="images-modal-body">
+                    <div class="no-images">
+                        <i data-feather="image"></i>
+                        <p>No images shared yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="undo-toast" aria-live="polite"></div>
+        <!-- Scripts -->
+        <script src="https://unpkg.com/feather-icons"></script>
+        <script src="scripts/chatbot.js"></script>
+    </body>
+</html>
