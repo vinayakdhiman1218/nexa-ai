@@ -112,6 +112,8 @@ function initializeChatbot() {
         });
     }
 
+    initializeSidebarResize();
+
     document.getElementById('pin-chat-btn').addEventListener('click', togglePinConversation);
     document.getElementById('favorite-chat-btn').addEventListener('click', toggleFavoriteConversation);
     document.getElementById('archive-chat-btn').addEventListener('click', toggleArchiveConversation);
@@ -137,6 +139,38 @@ function restoreLastActiveConversation() {
     loadConversation(conversation.id);
     return true;
 }
+
+function initializeSidebarResize() {
+    const resizeHandle = document.getElementById('sidebar-resize-handle');
+    const sidebar = document.querySelector('.chatbot-sidebar');
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    if (!resizeHandle || !sidebar) return;
+
+    resizeHandle.addEventListener('mousedown', (e) => {
+        isResizing = true;
+        startX = e.clientX;
+        startWidth = sidebar.offsetWidth;
+        document.body.style.userSelect = 'none';
+        document.body.style.cursor = 'ew-resize';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isResizing) return;
+        const deltaX = e.clientX - startX;
+        const newWidth = Math.max(200, Math.min(500, startWidth + deltaX));
+        sidebar.style.width = `${newWidth}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isResizing = false;
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+    });
+}
+
 
 function generateUniqueId() {
     return `chat_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
